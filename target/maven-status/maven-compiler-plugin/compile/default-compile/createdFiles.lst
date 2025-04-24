@@ -1,0 +1,5 @@
+com/mspace/employee/EmployeeDao.class
+com/mspace/employee/Employee.class
+com/mspace/employee/EmployeeBean.class
+com/mspace/employee/resources/JakartaEE10Resource.class
+com/mspace/employee/JakartaRestConfiguration.class

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Add Employee</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   
+        <h:outputStylesheet library="primefaces" name="primefaces.css" />
+        <h:outputStylesheet library="primefaces" name="primeicons/primeicons.css" />
+    
+    </h:head>
+    <body>
+        <h:link outcome="index" value="View Employees" />
+        <f:view>
+            <h:form id="form2">
+                 <p:growl id ="msgs" showDetail="true"/>
+                <h1><h:outputText value="Create Employee"/></h1>
+                <p:card style="width: 25rem; margin-bottom: 2em">
+                    <p:panelGrid columns="2" style="margin-bottom: 2em" id="newEmployee">
+
+                        <p:outputLabel value="First_name:" for="first_name" />
+                        <p:inputText id="first_name" value="#{employeeBean.employee.first_name}" title="First_name" required="we need this!" />
+                        <p:outputLabel value="Last_name:" for="last_name" />
+                        <p:inputText id="last_name" value="#{employeeBean.employee.last_name}" title="Last_name" required="we need this!" />
+                        <p:outputLabel value="Email:" for="email" />
+                        <p:inputText id="email" value="#{employeeBean.employee.email}" title="Email" required="we need this!" />
+                        <p:outputLabel value="Department:" for="department" />
+                        <p:inputText id="department" value="#{employeeBean.employee.department}" title="Department" required="we need this!"  />
+                        <p:outputLabel value="Salary:" for="salary" />
+                        <p:inputText id="salary" value="#{employeeBean.employee.salary}" title="Salary" type="number" required="we need this!"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Save" action="#{employeeBean.saveEmployee}" update=":form2:msgs :form2:newEmployee" />
+                </p:card>
+            </h:form>
+        </f:view>
+
+    </body>
+</html>
