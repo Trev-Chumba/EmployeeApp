@@ -92,7 +92,7 @@
                         <p:column style="width:4rem">
                             <p:commandButton icon="pi pi-trash"
                                              action="#{employeeBean.deleteEmployee(e)}"
-                                             update=":form:employees :form:msgs"
+                                             update="employees :form:msgs"
                                              process="@this"
                                              title="Delete" />
                         </p:column>
