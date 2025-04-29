@@ -46,7 +46,7 @@ public class EmployeeBean implements Serializable{
         try{
             
             employeeDao.save(employee);
-    
+             employees = employeeDao.findAll();
             FacesMessage msgs = new FacesMessage("saved succesfully", String.valueOf(employee.getId()));
             FacesContext.getCurrentInstance().addMessage(null, msgs);
         }catch (Exception e)

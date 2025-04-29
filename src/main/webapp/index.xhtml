@@ -25,7 +25,10 @@
                 <div class="card">
                     <h2>Employee Table</h2>
                     <p:card>
-                    <p:dataTable id="employees" var="e" value="#{employeeBean.employees}" editable="true"
+                        <p:commandButton value="Show" type="button" icon="pi pi-external-link" onclick="PF('dlg1').show()" />
+                    <p:dataTable id="employees" var="e" value="#{employeeBean.employees}" 
+                                 widgetVar="employeesTable"
+                                 editable="true"
                                  style="margin-bottom: 20px">
                         <p:ajax event="rowEdit" listener="#{employeeBean.editEmployee}" update=":form:msgs"/>
                         <p:ajax event="rowEditCancel" listener="#{employeeBean.cancel}"  update=":form:msgs"/>
@@ -98,6 +101,39 @@
                         </p:column>
                 </p:dataTable>
                </p:card>
+                    <p:dialog header="Header" widgetVar="dlg1" minHeight="40" width="400" showEffect="fade"
+                              dynamic="true"
+                              cache="true"
+                              appendTo="@(body)"
+                              closeOnEscape="true" >
+                        <h:form id="form2">
+                            <p:growl id ="msg" showDetail="true"/>
+                           <h1><h:outputText value="Create Employee"/></h1>
+                           <p:card style="width: 25rem; margin-bottom: 2em">
+                               <p:panelGrid columns="2" style="margin-bottom: 2em" id="newEmployee">
+
+                                   <p:outputLabel value="First_name:" for="first_name" />
+                                   <p:inputText id="first_name" value="#{employeeBean.employee.first_name}" title="First_name" required="we need this!" />
+                                   <p:outputLabel value="Last_name:" for="last_name" />
+                                   <p:inputText id="last_name" value="#{employeeBean.employee.last_name}" title="Last_name" required="we need this!" />
+                                   <p:outputLabel value="Email:" for="email" />
+                                   <p:inputText id="email" value="#{employeeBean.employee.email}" title="Email" required="we need this!" />
+                                   <p:outputLabel value="Department:" for="department" />
+                                   <p:inputText id="department" value="#{employeeBean.employee.department}" title="Department" required="we need this!"  />
+                                   <p:outputLabel value="Salary:" for="salary" />
+                                   <p:inputText id="salary" value="#{employeeBean.employee.salary}" title="Salary" type="number" required="we need this!"/>
+                               </p:panelGrid>
+                               <p:commandButton value="Save" action="#{employeeBean.saveEmployee()}" 
+                                               update="form2:msg form:employees"
+                                                process="@form" 
+                                                 partialSubmit="true"
+                                                 resetValues="true"
+                                                 oncomplete="PF('dlg1').hide();"
+                                                global="false"/>
+                               
+                           </p:card>
+                       </h:form>
+                    </p:dialog>
                 </div>
             </h:form>
         </h:body>
