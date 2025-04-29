@@ -25,7 +25,10 @@
                 <div class="card">
                     <h2>Employee Table</h2>
                     <p:card>
-                        <p:commandButton value="Show" type="button" icon="pi pi-external-link" onclick="PF('dlg1').show()" />
+                        <div style="width: 100%; display: flex; justify-content: center">
+                            <p:commandButton value="Show" type="button" icon="pi pi-external-link"  onclick="PF('dlg1').show()" />
+                        </div>
+                        
                     <p:dataTable id="employees" var="e" value="#{employeeBean.employees}" 
                                  widgetVar="employeesTable"
                                  editable="true"
@@ -101,7 +104,7 @@
                         </p:column>
                 </p:dataTable>
                </p:card>
-                    <p:dialog header="Header" widgetVar="dlg1" minHeight="40" width="400" showEffect="fade"
+                    <p:dialog header="Add employee" widgetVar="dlg1" minHeight="40" width="400" showEffect="fade"
                               dynamic="true"
                               cache="true"
                               appendTo="@(body)"
